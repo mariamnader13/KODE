@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Define a user group for users who can only view approved partners -->
+    <record id="group_approved_partners_only" model="res.groups">
+        <field name="name">View approved partners only[Regular Users]</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="comment">Users in this group can only see partners in the Approved state.</field>
+    </record>
+    
+    <!-- Define a user group for managers who can view all partners regardless of state -->
+    <record id="group_view_all_member" model="res.groups">
+        <field name="name">View all members [Manager]</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="comment">Users in this group can only see partners in all stats.</field>
+    </record>
+
+
+   
+</odoo>

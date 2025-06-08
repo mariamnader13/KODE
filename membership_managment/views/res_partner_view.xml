@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_custom" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.custom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add a header section before the first element of the form that contain button and state-->
+            <xpath expr="//form/*[1]" position="before">
+                <header>
+                    <field name="member_state" widget="statusbar" string="Member State"/>
+                    <button name="action_set_draft" string="Set Draft" type="object" class="oe_highlight" groups="membership_managment.group_view_all_member"/>
+                    <button name="action_set_approved" string="Set Approved" type="object" class="oe_highlight" groups="membership_managment.group_view_all_member"/>
+                    <button name="action_set_blacklisted" string="Set Blacklisted" type="object" class="oe_highlight" groups="membership_managment.group_view_all_member"/>
+                </header>
+            </xpath>
+       
+            <!-- Add first_arabic and second_arabic fields before the title section -->
+            <xpath expr="//div[@class='oe_title mb24']/div[@class='o_row']" position="before">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="first_arabic"/>
+                        <field name="first_arabic" string='First Name' placeholder="الاسم الأول" readonly="1"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="second_arabic"/>
+                        <field name="second_arabic" string='Second Name' placeholder="الاسم الثاني" readonly="1"/>
+                    </div>
+                </div>
+            </xpath>
+           
+            <!-- Add arabic_fullname field after the title (h1) element -->
+            <xpath expr="//div[@class='oe_title mb24']/h1" position="after">
+                <field name="arabic_fullname" placeholder="مثال : براندوم فريمان"/>
+            </xpath>
+
+            <!-- Add renew_date field after the category_id field -->
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="renew_date" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
